@@ -1,54 +1,64 @@
 const { green, red } = require("chalk");
 const { db } = require('./server/db');
-const { Category } = require('./server/db/models/category')
+const Category = require('./server/db/models/category')
+
+const categories = [
+  {
+    name: "Debt"
+  },
+  {
+    name: "Mortgage/Rent"
+  },
+  {
+    name: "Transportation"
+  },
+  {
+    name: "Car"
+  },
+  {
+    name: "Gas"
+  },
+  {
+    name: "Medical"
+  },
+  {
+    name: "Home Improvement"
+  },
+  {
+    name: "Utilities"
+  },
+  {
+    name: "Childcare"
+  },
+  {
+    name: "Entertainment"
+  },
+  {
+    name: "Travel"
+  },
+  {
+    name: "Personal"
+  },
+  {
+    name: "Eating Out"
+  },
+  {
+    name: "Education"
+  },
+]
 
 const seed = async () => {
   try {
-  await db.sync({ force: true })
-  const categories = [
-    {
-      name: "Debt"
-    },
-    {
-      name: "Mortgage/Rent"
-    },
-    {
-      name: "Transportation"
-    },
-    {
-      name: "Car"
-    },
-    {
-      name: "Gas"
-    },
-    {
-      name: "Medical"
-    },
-    {
-      name: "Home Improvement"
-    },
-    {
-      name: "Utilities"
-    },
-    {
-      name: "Childcare"
-    },
-    {
-      name: "Entertainment"
-    },
-    {
-      name: "Travel"
-    },
-    {
-      name: "Personal"
-    },
-    {
-      name: "Eating Out"
-    },
-    {
-      name: "Education"
-    },
-  ]} catch(err){
+  await db.sync({ force: true });
+
+  const createdCategories = [];
+
+  for (const category of categories){
+    const createdCategory = await Category.create(category);
+    createdCategories.push(createdCategory)
+  }
+
+  } catch(err){
     console.error(err)
   }
 }

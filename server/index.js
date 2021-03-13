@@ -3,7 +3,7 @@ const morgan = require("morgan");
 const path = require("path");
 const session = require("express-session");
 const passport = require("passport");
-const db = require("./db");
+const {db} = require("./db");
 
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const dbStore = new SequelizeStore({ db: db });

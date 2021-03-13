@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { login } from '../../store/user';
+import { login } from "../../store/user";
 
 class Login extends React.Component {
   constructor() {
@@ -25,6 +25,10 @@ class Login extends React.Component {
           onSubmit={(evt) => {
             evt.preventDefault();
             this.props.login(this.state);
+            this.setState({
+              email: "",
+              password: "",
+            });
           }}
         >
           <input
