@@ -5,6 +5,9 @@ import { Provider } from 'react-redux';
 import store from './store';
 import App from './app'
 import history from './history'
+import "bootstrap/dist/js/bootstrap.bundle.min";
+
+
 
 
 

@@ -14,7 +14,7 @@ const User = db.define("user", {
     allowNull: false,
     validate: {
       isEmail: true,
-    },
+    }
   },
   password: {
     type: Sequelize.STRING,

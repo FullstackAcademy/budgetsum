@@ -1,6 +1,7 @@
 const { green, red } = require("chalk");
 const { db } = require('./server/db');
-const Category = require('./server/db/models/category')
+const Category = require('./server/db/models/category');
+const User = require('./server/db/models/user');
 
 const categories = [
   {
@@ -45,17 +46,31 @@ const categories = [
   {
     name: "Education"
   },
+];
+
+const users = [
+  {
+    name: 'Cody',
+    email: 'cody@email.com',
+    password: '123',
+  }
 ]
 
 const seed = async () => {
   try {
-  await db.sync({ force: true });
+  await db.sync({ force: false, alter: true});
 
   const createdCategories = [];
+  const createdUsers = [];
 
   for (const category of categories){
     const createdCategory = await Category.create(category);
     createdCategories.push(createdCategory)
+  }
+
+  for (const user of users){
+    const createdUser = await User.create(user);
+    createdUsers.push(createdUser)
   }
 
   } catch(err){
