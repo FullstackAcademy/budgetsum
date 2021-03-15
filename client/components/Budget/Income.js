@@ -1,14 +1,17 @@
 import React from "react";
-import { Redirect, Link } from "react-router-dom";
+import { connect, Link } from "react-router-dom";
 import FormControl from 'react-bootstrap/FormControl';
 import InputGroup from 'react-bootstrap/InputGroup'
 import GoalStateless from "../Budget/GoalStateless";
 
-export default class Goals extends React.Component {
+
+  class Income extends React.Component {
   constructor() {
     super();
     this.state = {
-
+      Transportation = "",
+      Debt = "",
+      Home = ""
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,6 +25,7 @@ export default class Goals extends React.Component {
 
     handleSubmit(evt){
       evt.preventDefault();
+
     }
 
 
@@ -46,3 +50,17 @@ export default class Goals extends React.Component {
      />;
   }
 }
+
+const mapState = state => {
+  console.log('in income', state)
+  return {
+
+  }
+ }
+
+const mapDispatch = (dispatch, ownProps) => ({
+
+  login: (body) => dispatch(login(body)),
+});
+
+export default connect(mapState, mapDispatch)(Income);
