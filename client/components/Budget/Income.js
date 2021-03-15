@@ -3,9 +3,9 @@ import { connect, Link } from "react-router-dom";
 import FormControl from 'react-bootstrap/FormControl';
 import InputGroup from 'react-bootstrap/InputGroup'
 import GoalStateless from "../Budget/GoalStateless";
+import ProgressBar from 'react-bootstrap/ProgressBar'
 
-
-  class Income extends React.Component {
+  export default class Income extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -32,6 +32,7 @@ import GoalStateless from "../Budget/GoalStateless";
   render() {
     const inputVal = (
       <div>
+        <ProgressBar animated now={75} />
         <InputGroup size="sm" className="mb-3" onChange={this.handleChange}>
           <InputGroup.Prepend>
             <InputGroup.Text
@@ -51,16 +52,3 @@ import GoalStateless from "../Budget/GoalStateless";
   }
 }
 
-const mapState = state => {
-  console.log('in income', state)
-  return {
-
-  }
- }
-
-const mapDispatch = (dispatch, ownProps) => ({
-
-  login: (body) => dispatch(login(body)),
-});
-
-export default connect(mapState, mapDispatch)(Income);

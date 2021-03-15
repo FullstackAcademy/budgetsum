@@ -1,6 +1,7 @@
 import React from "react";
 import GoalStateless from "./GoalStateless";
 import { Link } from "react-router-dom";
+import ProgressBar from 'react-bootstrap/ProgressBar'
 
 export default class Discover extends React.Component {
   render() {
@@ -10,6 +11,8 @@ export default class Discover extends React.Component {
       </Link>
     );
     return (
+      <div>
+      <ProgressBar animated now={25} />
       <GoalStateless
         title={"Reach your goals for free with BudgetSum."}
         bodyInfo={
@@ -20,6 +23,7 @@ export default class Discover extends React.Component {
         }
         button={linkButton}
       />
+      </div>
     );
   }
 }

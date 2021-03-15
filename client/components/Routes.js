@@ -5,7 +5,8 @@ import Login from "./Login/Login";
 import UserHome from "./User/User-Home";
 import Discover from "./Budget/Discover";
 import Goals from "./Budget/Goals";
-import Income from "./Budget/Income"
+import Income from "./Budget/Income";
+import Products from "./Products";
 
 
 const Home = () => (
@@ -27,6 +28,7 @@ const Routes = () => {
           <Route exact path="/discover" component={Discover} />
           <Route exact path="/goals" component={Goals} />
           <Route exact path="/income" component={Income} />
+          <Route exact path="/products" component={Products} />
 
     </Switch>
   );

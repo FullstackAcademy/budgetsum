@@ -3,6 +3,7 @@ import { Redirect, Link } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import GoalStateless from "../Budget/GoalStateless";
+import ProgressBar from 'react-bootstrap/ProgressBar'
 
 export default class Goals extends React.Component {
   constructor() {
@@ -23,6 +24,8 @@ export default class Goals extends React.Component {
     );
 
     return (
+      <div>
+      <ProgressBar animated now={50} />
       <GoalStateless
         inspirationalQuote={
           "'The best way to stick to your budget is to start one.'"
@@ -31,6 +34,7 @@ export default class Goals extends React.Component {
         bodyInfo={"Select from the dropdown menu"}
         button={dropdownButton}
       />
+      </div>
     );
   }
 }
