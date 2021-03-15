@@ -9,9 +9,9 @@ import GoalStateless from "../Budget/GoalStateless";
   constructor() {
     super();
     this.state = {
-      Transportation = "",
-      Debt = "",
-      Home = ""
+      // Transportation = "",
+      // Debt = "",
+      // Home = ""
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
