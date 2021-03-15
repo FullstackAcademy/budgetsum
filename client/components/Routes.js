@@ -1,9 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import Login from "./Login/Login";
-import UserHome from "./User/User-Home"
-import Discover from "./Budget/Discover"
+import UserHome from "./User/User-Home";
+import Discover from "./Budget/Discover";
+import Goals from "./Budget/Goals";
+import Income from "./Budget/Income"
 
 
 const Home = () => (
@@ -23,6 +25,9 @@ const Routes = () => {
           <Route exact path="/login" component={Login} />
           <Route exact path="/home" component={UserHome} />
           <Route exact path="/discover" component={Discover} />
+          <Route exact path="/goals" component={Goals} />
+          <Route exact path="/income" component={Income} />
+
     </Switch>
   );
 };
