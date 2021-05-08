@@ -17,7 +17,10 @@ const User = db.define("user", {
     }
   },
   password: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING
+  },
+  income: {
+    type: Sequelize.INTEGER
   },
   salt: {
     type: Sequelize.STRING,

@@ -1,10 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import {login} from "../../store/user";
+import { login } from "../../store/user";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-
-
 
 class Login extends React.Component {
   constructor() {
@@ -25,7 +23,8 @@ class Login extends React.Component {
   render() {
     return (
       <div>
-        <form
+        {/* <a href="/auth/google">Login with Google</a> */}
+        <Form
           onSubmit={(evt) => {
             evt.preventDefault();
             this.props.login(this.state);
@@ -35,26 +34,15 @@ class Login extends React.Component {
             });
           }}
         >
-          <input
-            type="text"
-            name="email"
-            onChange={this.handleChange}
-            value={this.state.email}
-          />
-          <input
-            type="password"
-            name="password"
-            onChange={this.handleChange}
-            value={this.state.password}
-          />
-          <button type="submit">Log In</button>
-        </form>
-        <a href="/auth/google">Login with Google</a>
-
-        <Form>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
+            <Form.Control
+              type="email"
+              placeholder="Enter email"
+              onChange={this.handleChange}
+              value={this.state.email}
+              name="email"
+            />
             <Form.Text className="text-muted">
               We'll never share your email with anyone else.
             </Form.Text>
@@ -62,7 +50,13 @@ class Login extends React.Component {
 
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
+            <Form.Control
+              type="password"
+              placeholder="Password"
+              name="password"
+              onChange={this.handleChange}
+              value={this.state.password}
+            />
           </Form.Group>
           <Form.Group controlId="formBasicCheckbox">
             <Form.Check type="checkbox" label="Check me out" />
@@ -76,8 +70,7 @@ class Login extends React.Component {
   }
 }
 
-const mapDispatch = (dispatch, ownProps) => ({
-
+const mapDispatch = (dispatch) => ({
   login: (body) => dispatch(login(body)),
 });
 

@@ -5,6 +5,7 @@ const session = require("express-session");
 const passport = require("passport");
 const {db} = require("./db");
 
+//set up sessions table in db
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const dbStore = new SequelizeStore({ db: db });
 
@@ -55,6 +56,19 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "index.html"));
 });
 
+// make sure to put this AFTER your session middleware, but BEFORE you send your response!
+app.use((req, res, next) => {
+  if (!req.session.counter) req.session.counter = 0
+  console.log('counter', ++req.session.counter) // increment THEN log
+  next() // needed to continue through express middleware
+});
+
+// place right after the session setup middleware
+app.use((req, res, next) => {
+  console.log('SESSION --> ', req.session)
+  next()
+})
+
 app.use((err, req, res, next) => {
   console.error(err);
   console.error(err.stack);
@@ -64,7 +78,7 @@ app.use((err, req, res, next) => {
 const port = process.env.PORT || 3000;
 
 const startServer = async () => {
-  await db.sync({force: true});
+  await db.sync();
   await dbStore.sync();
   app.listen(port, () => {
     console.log("Knock, knock");

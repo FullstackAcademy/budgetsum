@@ -4,33 +4,26 @@ import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 // import Login from '../Login/Login'
 
-
-
 const UserHome = props => {
   const { user } = props;
 
   if(!user.id){
-    console.log('i got git', user)
-    return <Redirect to='/' />
+    return <Redirect to='/home' />
   }
 
   return (
     <div>
-      {/* <Login /> */}
       <h3>Welcome, {user.name}</h3>
-      {/* {isAdmin ? <AllUsers /> : ''} */}
     </div>
   )
 }
 
 const mapState = state => {
- console.log('in user-home', state)
+ console.log('in user-home', state.user)
  return {
    user: state.user
  }
 }
-
-
 export default connect(mapState)(UserHome)
 
 UserHome.propTypes = {

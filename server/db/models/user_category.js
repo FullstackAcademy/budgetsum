@@ -9,6 +9,9 @@ const User_Category = db.define('user_category', {
     autoIncrement: true,
     allowNull: false
   },
+  price: {
+    type: Sequelize.INTEGER
+  },
   selfGranted: Sequelize.BOOLEAN
 }, { timestamps: false });
 

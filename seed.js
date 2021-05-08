@@ -5,7 +5,7 @@ const User = require('./server/db/models/user');
 
 const categories = [
   {
-    name: "Debt"
+    name: "Debt",
   },
   {
     name: "Mortgage/Rent"
@@ -51,14 +51,14 @@ const categories = [
 const users = [
   {
     name: 'Cody',
-    email: 'cody@email.com',
+    email: 'cody@gmail.com',
     password: '123',
   }
 ]
 
 const seed = async () => {
   try {
-  await db.sync({ force: false, alter: true});
+  await db.sync({ force: true, alter: true});
 
   const createdCategories = [];
   const createdUsers = [];

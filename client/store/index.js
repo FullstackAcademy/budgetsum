@@ -1,15 +1,13 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunkMiddleware from "redux-thunk";
 import { createLogger } from "redux-logger";
-import userReducer from "./user"
+import userReducer from "./user";
 
 
-const store = createStore(
+export default createStore(
   combineReducers({
-    user: userReducer
+    user: userReducer,
   }),
   applyMiddleware(thunkMiddleware, createLogger()
   )
 )
-
-export default store

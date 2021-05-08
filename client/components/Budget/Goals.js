@@ -16,10 +16,10 @@ export default class Goals extends React.Component {
         <Dropdown.Item
         as={Link} to="/income"
         href="#/action-1">Pay off debt</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Save for retirement</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Buy a home</Dropdown.Item>
-        <Dropdown.Item href="#/action-4">Travel</Dropdown.Item>
-        <Dropdown.Item href="#/action-5">Other</Dropdown.Item>
+        <Dropdown.Item as={Link} to="/income" href="#/action-2">Save for retirement</Dropdown.Item>
+        <Dropdown.Item as={Link} to="/income" href="#/action-3">Buy a home</Dropdown.Item>
+        <Dropdown.Item as={Link} to="/income" href="#/action-4">Travel</Dropdown.Item>
+        <Dropdown.Item as={Link} to="/income" href="#/action-5">Other</Dropdown.Item>
       </DropdownButton>
     );
 

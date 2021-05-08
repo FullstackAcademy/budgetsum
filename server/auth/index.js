@@ -1,19 +1,20 @@
 const router = require("express").Router();
 const User = require('../db/models/user')
 
+const userNotFound = (next) => {
+  const err = new Error("User Not found");
+  err.status = 404;
+  next(err);
+};
 
-router.get('/me', async (req, res, next) => {
+router.get("/me", async (req, res, next) => {
   try{
     if(!req.session.userId){
-      if(req.user){
-        res.json(req.user)
-      } else {
-        res.sendStatus(401)
-      }
+      userNotFound(next)
     } else {
-      const user = await User.findByPk(req.session.userId)
+      const user = await User.findByPk(req.session.userId);
       if(!user){
-        res.sendStatus(401)
+        userNotFound(next);
       } else {
         res.json(user)
       }
@@ -35,6 +36,7 @@ router.put("/login", async (req, res, next) => {
     console.log('user--->', user)
     if (user) {
       req.session.userId = user.id;
+      // console.log(req.session)
       res.json(user);
     } else {
       res.status(401).send('Wrong username and/or password')
