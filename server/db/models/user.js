@@ -22,6 +22,9 @@ const User = db.define("user", {
   income: {
     type: Sequelize.INTEGER
   },
+  savings: {
+    type: Sequelize.INTEGER
+  },
   salt: {
     type: Sequelize.STRING,
   },

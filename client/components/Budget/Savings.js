@@ -1,50 +1,48 @@
-import React from "react";
+import React from 'react';
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import ProgressBar from "react-bootstrap/ProgressBar";
-// import GoalStateless from "../Budget/GoalStateless";
 import GoalStateless from "./GoalStateless";
-import { setIncome } from "../../store/user";
+import { setSavings } from "../../store/user";
 
-class Income extends React.Component {
-  constructor() {
+class Savings extends React.Component {
+  constructor(){
     super();
     this.state = {
-      income: "",
-    };
+      savings: "",
+    }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(evt) {
+  handleChange(evt){
     this.setState({
-      [evt.target.name]: evt.target.value,
-    });
+      [evt.target.name]: evt.target.value
+    })
   }
 
-  async handleSubmit(evt) {
+  async handleSubmit(evt){
     evt.preventDefault();
-    //plus sign converts to number or parseInt
-    await this.props.setIncome(+this.state.income);
-
-    this.props.history.push("/savings");
+    await this.props.setSavings(+this.state.savings);
+    this.props.history.push("/categories");
   }
 
   render() {
     const inputVal = (
       <div>
-        <ProgressBar animated now={75} />
+        <ProgressBar animated now={85} />
         <InputGroup size="sm" className="mb-3">
           <InputGroup.Prepend>
             <InputGroup.Text>$</InputGroup.Text>
           </InputGroup.Prepend>
           <FormControl
             id="inputGroup-sizing-sm"
-            name="income"
+            name="savings"
             onChange={this.handleChange}
-            value={this.state.income}
+            value={this.state.savings}
             aria-label="Small"
             aria-describedby="inputGroup-sizing-sm"
           />
@@ -62,7 +60,7 @@ class Income extends React.Component {
     );
     return (
       <GoalStateless
-        inspirationalQuote={"Tell us your annual income"}
+        inspirationalQuote={"Tell us your current savings"}
         button={inputVal}
       />
     );
@@ -70,7 +68,7 @@ class Income extends React.Component {
 }
 
 const mapDispatch = (dispatch) => ({
-  setIncome: (income) => dispatch(setIncome(income)),
+  setSavings: (savings) => dispatch(setSavings(savings)),
 });
 
-export default connect(null, mapDispatch)(Income);
+ export default connect(null, mapDispatch)(Savings);

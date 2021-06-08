@@ -25,7 +25,6 @@ export const login = (body) => async (dispatch) => {
 //thunk
 export const me = () => async (dispatch) => {
   try {
-    console.log("Me gets called");
     const { data } = await axios.get("/auth/me");
     console.log("thunk data", data);
     // dispatch(gotUser(data));
@@ -39,6 +38,17 @@ export const setIncome = (income) => async (dispatch) => {
   try {
     const { data: user } = await axios.post("/api/users/setIncome", {income});
     dispatch(gotUser(user));
+    console.log({income})
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const setSavings = (savings) => async (dispatch) => {
+  try {
+    const { data: user } = await axios.post("/api/users/setSavings", {savings});
+    dispatch(gotUser(user));
+    console.log({savings})
   } catch (err) {
     console.error(err);
   }
